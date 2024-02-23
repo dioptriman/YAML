@@ -1,0 +1,84 @@
+cards:
+  show_name: true
+  show_icon: true
+  type: button
+  tap_action:
+    action: toggle
+  entity: lighttitle Home Assistant
+views:
+  - icon: hass:home-assistant
+    id: home
+    title: Home
+    cards:
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        entity: light.living_room_lights
+        icon: mdi:valve
+        name: Water Valve
+      - type: custom:ha-demo-card
+      - graph: line
+        type: sensor
+        entity: sensor.study_temp
+        detail: 1
+      - type: gauge
+        entity: sensor.grid_fossil_fuel_percentage
+        name: Humidity
+        needle: false
+      - type: gauge
+        entity: sensor.solar_production
+        needle: false
+        severity:
+          green: 0
+          yellow: 0
+          red: 0
+        name: Electroconductivity
+        unit: us
+      - graph: none
+        type: sensor
+        entity: sensor.battery_input
+        detail: 1
+        name: Salinity
+        unit: ppm
+      - type: gauge
+        entity: sensor.battery_output
+        name: Total Dissolve Solid
+        unit: ppm
+        severity:
+          green: 0
+          yellow: 0
+          red: 0
+        needle: false
+      - type: entity
+        entity: sensor.energy_consumption_tarif_1
+        name: pH
+        unit: pH
+      - show_name: false
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.energy_consumption_tarif_2
+          - entity: sensor.energy_production_tarif_1
+        title: TDS and Salinity
+        state_color: true
+      - type: entity
+        entity: sensor.energy_production_tarif_2
+        name: Battery
+        icon: mdi:battery
+        unit: "%"
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.total_tv_time
+            name: Total Usage Hour
+        title: Total Usage Hour
+        show_header_toggle: true
+        state_color: false
+      - type: entities
+        entities:
+          - entity: sensor.ring_front_door_last_motion
+            name: Last Sending Data
+        title: Last Sending Data
